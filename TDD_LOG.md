@@ -174,3 +174,53 @@ function add(numbers) {
   return values.reduce((sum, num) => sum + parseInt(num), 0);
 }
 ```
+
+---
+
+## 🧪 Cycle 8: Delimiters Can Be of Any Length Using Format `//[delimiter]\n`
+
+### 🔴 Test
+- Added test cases:
+```js
+expect(add("//[***]\n1***2***3")).toBe(6);
+expect(add("//[abc]\n4abc5abc6")).toBe(15);
+```
+
+### 🟢 Code
+```js
+function tokenize(input) {
+  let delimiterRegex = /[,\n]/;
+  let numberSection = input;
+
+  // Match multi-character delimiter: //[***]\n1***2***3
+  const multiCharMatch = input.match(/^\/\/\[(.+)]\n(.*)/);
+  if (multiCharMatch) {
+    const customDelimiter = multiCharMatch[1];
+    numberSection = multiCharMatch[2];
+    delimiterRegex = new RegExp(`${escapeRegExp(customDelimiter)}|\n`);
+  } else {
+    // Fallback to single-character delimiter
+    const customDelimiterMatch = input.match(/^\/\/(.)\n(.*)/);
+    if (customDelimiterMatch) {
+      const customDelimiter = customDelimiterMatch[1];
+      numberSection = customDelimiterMatch[2];
+      delimiterRegex = new RegExp(`[${escapeRegExp(customDelimiter)}\n]`);
+    }
+  }
+
+  return numberSection
+    .split(delimiterRegex)
+    .map(n => n.trim())
+    .filter(n => n !== "");
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+```
+
+### ♻️ Refactor
+- Used `escapeRegExp()` to safely include any delimiter in RegExp
+- Extended existing parsing logic to support multi-character delimiters inside square brackets
+
+✅ **Result:** The calculator now supports custom delimiters of any length using the `//[delimiter]\n` format, such as `***`, `abc`, or even `###`.

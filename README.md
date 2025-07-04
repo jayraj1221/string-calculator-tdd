@@ -15,16 +15,17 @@ This project is part of the **Incubyte hiring assessment** and showcases clean, 
 
 ## ✅ Kata Requirements
 
-| Feature Description                                      | Status |
-|----------------------------------------------------------|--------|
-| Returns 0 for empty string                               | ✅     |
-| Returns number for a single value                        | ✅     |
-| Returns sum for two numbers separated by comma           | ✅     |
-| Supports multiple comma-separated numbers                | ✅     |
-| Handles newline (`\n`) as a delimiter                    | ✅     |
-| Supports custom delimiters (e.g. `"//;\n1;2"`)           | ✅     |
-| Throws exception for negative numbers                    | ✅     |
-| Shows **all** negative numbers in exception              | ✅     |
+| Feature Description                                                                 | Status |
+|--------------------------------------------------------------------------------------|--------|
+| Returns 0 for empty string                                                          | ✅     |
+| Returns number for a single value                                                   | ✅     |
+| Returns sum for two numbers separated by comma                                      | ✅     |
+| Supports multiple comma-separated numbers                                           | ✅     |
+| Handles newline (`\n`) as a delimiter                                               | ✅     |
+| Supports custom single-character delimiters (e.g. `"//;\n1;2"`)                     | ✅     |
+| Throws exception for negative numbers                                               | ✅     |
+| Shows **all** negative numbers in exception                                         | ✅     |
+| Supports **custom delimiters of any length** using format `"//[***]\n1***2***3"`    | ✅     |
 
 ---
 
