@@ -77,3 +77,45 @@ function add(numbers) {
   return nums.reduce((sum, num) => sum + num, 0);
 }
 ```
+---
+
+## 🧪 Cycle 5: Support Newline Characters as Delimiters
+
+### 🔴 Test
+- Added test: `add("1\n2,3")` should return `6`
+
+### 🟢 Code
+```js
+function add(numbers) {
+  if (numbers === "") return 0;
+
+  const delimiters = /[,\n]/;
+  const parts = numbers.split(delimiters).map(n => n.trim()).filter(n => n !== "");
+  const parsedNumbers = parts.map(Number);
+
+  return parsedNumbers.reduce((sum, num) => sum + num, 0);
+}
+```
+### ♻️ Refactor
+- Moved delimiter logic to a separate `tokenize()` helper
+- Used `!numbers` for a broader empty-check (covers `null`, `undefined`)
+- Kept main `add()` logic focused on parsing and summing only
+
+```js
+function add(numbers) {
+  if (!numbers) return 0;
+
+  const values = tokenize(numbers);
+  const sum = values.reduce((acc, num) => acc + parseInt(num), 0);
+  
+  return sum;
+}
+
+function tokenize(input) {
+  const delimiterRegex = /[,\n]/;
+  return input
+    .split(delimiterRegex)
+    .map(n => n.trim())
+    .filter(n => n !== "");
+}
+```

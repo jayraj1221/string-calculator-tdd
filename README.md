@@ -21,7 +21,7 @@ This project is part of the **Incubyte hiring assessment** and showcases clean, 
 | Returns number for a single value                        | ✅     |
 | Returns sum for two numbers separated by comma           | ✅     |
 | Supports multiple comma-separated numbers                | ✅     |
-| Handles newline (`\n`) as a delimiter                    | 🔲     |
+| Handles newline (`\n`) as a delimiter                    | ✅     |
 | Supports custom delimiters (e.g. `"//;\n1;2"`)           | 🔲     |
 | Throws exception for negative numbers                    | 🔲     |
 | Shows **all** negative numbers in exception              | 🔲     |
