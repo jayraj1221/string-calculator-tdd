@@ -61,3 +61,19 @@ function add(numbers) {
   if (nums.length === 2) return parseInt(nums[0]) + parseInt(nums[1]);
 }
 ```
+---
+
+## 🧪 Cycle 4: Handle Multiple Comma-Separated Numbers
+
+### 🔴 Test
+- Added test: `add("1,2,3,4")` should return `10`
+
+### 🟢 Code
+```js
+function add(numbers) {
+  if (numbers === "") return 0;
+
+  const nums = numbers.split(",").map(n => parseInt(n));
+  return nums.reduce((sum, num) => sum + num, 0);
+}
+```

@@ -19,8 +19,8 @@ This project is part of the **Incubyte hiring assessment** and showcases clean, 
 |----------------------------------------------------------|--------|
 | Returns 0 for empty string                               | ✅     |
 | Returns number for a single value                        | ✅     |
-| Returns sum for two numbers separated by comma           | 🔲     |
-| Supports multiple comma-separated numbers                | 🔲     |
+| Returns sum for two numbers separated by comma           | ✅     |
+| Supports multiple comma-separated numbers                | ✅     |
 | Handles newline (`\n`) as a delimiter                    | 🔲     |
 | Supports custom delimiters (e.g. `"//;\n1;2"`)           | 🔲     |
 | Throws exception for negative numbers                    | 🔲     |
