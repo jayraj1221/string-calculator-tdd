@@ -152,3 +152,25 @@ function tokenize(input) {
     .filter(n => n !== "");
 }
 ```
+---
+
+## 🧪 Cycle 7: Throw Exception for Negative Numbers
+
+### 🔴 Test
+- Added test: `add("1,-2,-4")` should throw `"negative numbers not allowed -2,-4"`
+
+### 🟢 Code
+```js
+function add(numbers) {
+  if (!numbers) return 0;
+
+  const values = tokenize(numbers);
+  const negativeNumbers = values.filter(n => parseInt(n) < 0);
+
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed ${negativeNumbers.join(",")}`);
+  }
+
+  return values.reduce((sum, num) => sum + parseInt(num), 0);
+}
+```
