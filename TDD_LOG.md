@@ -119,3 +119,36 @@ function tokenize(input) {
     .filter(n => n !== "");
 }
 ```
+---
+
+## 🧪 Cycle 6: Support Custom Delimiter using `//[delimiter]\n[numbers]` Format
+
+### 🔴 Test
+- Added test: `add("//;\n1;2")` should return `3`
+
+### 🟢 Code
+```js
+function add(numbers) {
+  if (!numbers) return 0;
+
+  const values = tokenize(numbers);
+  return values.reduce((sum, num) => sum + parseInt(num), 0);
+}
+
+function tokenize(input) {
+  let delimiterRegex = /[,\n]/;  
+  let numberSection = input;
+
+  const customDelimiterMatch = input.match(/^\/\/(.)\n(.*)/);
+  if (customDelimiterMatch) {
+    const customDelimiter = customDelimiterMatch[1];      
+    numberSection = customDelimiterMatch[2];              
+    delimiterRegex = new RegExp(`[${customDelimiter}\n]`); 
+  }
+
+  return numberSection
+    .split(delimiterRegex)
+    .map(n => n.trim())
+    .filter(n => n !== "");
+}
+```
