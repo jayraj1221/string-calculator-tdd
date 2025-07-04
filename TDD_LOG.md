@@ -29,7 +29,7 @@ This document logs each **TDD cycle** (Red → Green → Refactor) to show how t
 function add(numbers) {
   if (numbers === "") return 0;
 }
-
+```
 ---
 
 ## 🧪 Cycle 2: Handle Single Number Input
@@ -43,3 +43,4 @@ function add(numbers) {
   if (numbers === "") return 0;
   return parseInt(numbers);
 }
+```
