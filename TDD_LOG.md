@@ -224,3 +224,53 @@ function escapeRegExp(string) {
 - Extended existing parsing logic to support multi-character delimiters inside square brackets
 
 ✅ **Result:** The calculator now supports custom delimiters of any length using the `//[delimiter]\n` format, such as `***`, `abc`, or even `###`.
+
+---
+
+## 🔧 Refactor: Extract delimiter parsing into helper for clarity and extensibility
+
+### ✨ Motivation
+- The `tokenize()` function was growing in complexity due to multiple parsing responsibilities.
+- To improve **readability**, **maintainability**, and prepare for **future extension** (e.g., multiple delimiters), we extracted parsing logic into a separate helper.
+
+---
+
+### 🟢 Refactored Code
+```js
+function tokenize(input) {
+  const { delimiters, numberSection } = extractDelimitersAndNumbers(input);
+  const delimiterRegex = new RegExp(delimiters.join('|'));
+
+  return numberSection
+    .split(delimiterRegex)
+    .map(n => n.trim())
+    .filter(n => n !== "");
+}
+
+function extractDelimitersAndNumbers(input) {
+  const defaultDelimiters = [",", "\n"];
+
+  if (input.startsWith("//")) {
+    const multiCharMatch = input.match(/^\/\/\[(.+)]\n(.*)/);
+    if (multiCharMatch) {
+      return {
+        delimiters: [escapeRegExp(multiCharMatch[1]), "\n"],
+        numberSection: multiCharMatch[2],
+      };
+    }
+
+    const singleCharMatch = input.match(/^\/\/(.)\n(.*)/);
+    if (singleCharMatch) {
+      return {
+        delimiters: [escapeRegExp(singleCharMatch[1]), "\n"],
+        numberSection: singleCharMatch[2],
+      };
+    }
+  }
+
+  return {
+    delimiters: defaultDelimiters.map(escapeRegExp),
+    numberSection: input,
+  };
+}
+```
