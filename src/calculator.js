@@ -1,15 +1,20 @@
 function add(numbers) {
   if (!numbers) return 0;
-
   const values = tokenize(numbers);
+
   const negatives = values.filter(n => parseInt(n) < 0);
 
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
   }
 
-  return values.reduce((sum, num) => sum + parseInt(num), 0);
+  return values.reduce((sum, num) => {
+    const n = parseInt(num);
+    return n <= 1000 ? sum + n : sum;
+  }, 0);
+  
 }
+
 
 function tokenize(input) {
   const { delimiters, numberSection } = extractDelimitersAndNumbers(input);

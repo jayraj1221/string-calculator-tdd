@@ -12,7 +12,6 @@ This project is part of the **Incubyte hiring assessment** and showcases clean, 
 - 📝 TDD + Red-Green-Refactor Approach
 
 ---
-
 ## ✅ Kata Requirements
 
 | Feature Description                                                                 | Status |
@@ -26,6 +25,7 @@ This project is part of the **Incubyte hiring assessment** and showcases clean, 
 | Throws exception for negative numbers                                               | ✅     |
 | Shows **all** negative numbers in exception                                         | ✅     |
 | Supports **custom delimiters of any length** using format `"//[***]\n1***2***3"`    | ✅     |
+| Ignores numbers greater than 1000 (e.g. `"2,1001"` → `2`)                           | ✅     |
 
 ---
 

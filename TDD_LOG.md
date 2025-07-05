@@ -274,3 +274,36 @@ function extractDelimitersAndNumbers(input) {
   };
 }
 ```
+
+---
+
+## 🧪 Cycle 9: Ignore Numbers > 1000
+
+### 🎯 Goal
+Enhance the calculator to:
+- ❌ Ignore numbers greater than 1000 during summation
+---
+
+### 🔴 Test Cases Added
+```js
+expect(add("2,1001")).toBe(2);           // 1001 is ignored
+expect(add("1000,1")).toBe(1001);        // 1000 is included
+```
+
+---
+
+### 🟢 Code Changes
+Updated summation logic in `add()` to ignore numbers greater than 1000:
+
+```js
+return values.reduce((sum, num) => {
+  const n = parseInt(num);
+  return n <= 1000 ? sum + n : sum;
+}, 0);
+```
+
+---
+
+### ♻️ Refactor
+- ❌ No structural refactor needed
+- ✅ Added inline comments for clarity and maintainability
